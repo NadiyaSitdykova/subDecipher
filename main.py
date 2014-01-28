@@ -1,3 +1,5 @@
+import getopt
+import sys
 import decipher
 import encipher
 import random
@@ -16,14 +18,37 @@ def get_sampling(samplingSize):
 
     return re.sub('[^A-Z]', '', text)
 
-testCount = 20
-results = list()
-for i in range(12, 13):
-    sum = 0
-    for j in range(1, testCount + 1):
-        text = get_sampling(i)
-        cipher, key = encipher.makeCipher(text)
-        sum += decipher.decipher(cipher, key)
-    results.append(sum / testCount)
-    print(i, sum / testCount)
-print(results)
+def compute_statistic(iterations_count):
+    results = list()
+    for i in range(5, 21):
+        sum = 0
+        for j in range(1, iterations_count + 1):
+            text = get_sampling(i)
+            cipher, key = encipher.makeCipher(text)
+            sum += decipher.decipher(cipher, key)[0]
+        results.append(sum / iterations_count)
+        print(i, sum / iterations_count)
+    print(results)
+    return results
+
+def sample(sentences_count):
+    text = get_sampling(sentences_count)
+    print('text:\n', text)
+    cipher, key = encipher.makeCipher(text)
+    print('enciphered text:\n', cipher)
+    decipheredText = decipher.decipher(cipher, key)[1]
+    print('deciphered text:\n', decipheredText)
+
+myopts, args = getopt.getopt(sys.argv[1:],"l:q:")
+
+for o, a in myopts:
+    if o == '-l':
+        if a.isdigit():
+            compute_statistic(int(a))
+        else:
+            print("Illegal arguments: ", a)
+    elif o == '-q':
+        if a.isdigit():
+            sample(int(a))
+        else:
+            print("Illegal arguments: ", a)

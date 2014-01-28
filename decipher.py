@@ -52,4 +52,4 @@ def decipher(cipher, real_key):
             for j, c in enumerate(real_key):
                 if c == maxkey[j]:
                     coincidences += 1
-    return coincidences
+    return coincidences, sub_decipher(cipher, maxkey)
