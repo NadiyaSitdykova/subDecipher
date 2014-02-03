@@ -3,6 +3,7 @@ subDecipher
 Скрипты написаны на python3.
 
 main запускать с параметрами:
+
 -q <sentences_count> -- для простого запуска алгоритма шифровки и последующей дешифровки случайных
     <sentences_count> предложений из brown.corpus.
         пример: python main.py -q 10
