@@ -1,10 +1,11 @@
 subDecipher
 ==========
-Скрипты написаны на ```python3```.
+Scripts are written on  ```python3```.
 
-```main``` запускать с параметрами:
-* ```-q <sentences_count>``` -- для простого запуска алгоритма шифровки и последующей дешифровки случайных ```<sentences_count>``` предложений из ```brown.corpus```.
-Например: ```python3 main.py -q 10```
-* ```-l <iterations_count>``` -- для подсчета статистики для выборок 5-20 случайных предложений по ```<iterations_count>``` (число запусков алгоритма) для каждого числа предложений. Например: ```python main.py -l 20```
+Run ```main``` with parameters:
+* ```-q <sentences_count>``` -- simple run of Cipher algorithm and followin deciphering of ```<sentences_count>``` random sentences from ```brown.corpus```.
+Example: ```python3 main.py -q 10```
+* ```-l <iterations_count>``` -- computes stats for samples of 5-20 random sentences by ```<iterations_count>``` iterations.
+Example: ```python main.py -l 20```
 
-```plotting.py``` чертит график по ранее собранной мной статистике c ```<iterations_count> = 20```. Статистика также хранится в plotting.py в листе results, где числа в листе означают среднее число верно подобранных букв в ключе в результате ```<iterations_count>``` запусков алгоритма. Аналогичную статистику можно собрать запустив ```main``` с параметром ```-l <iterations_count>```
+```plotting.py``` draws stats with ```<iterations_count> = 20```. List results in plotting.py contains mean value of correctly found symbols in key after ```<iterations_count>``` iterations. This values also avalilable by running ```main -l <iterations_count>```
